@@ -1,0 +1,32 @@
+data analysis project piplines
+	1) build a Database
+         2) DEVELP THE SQL QUERRY
+          3) CONNECT bi to data base
+           4) visualize 
+           5) Sumarize Findings
+SQL serber name:DESKTOP-TARQ8TG\SQLEXPRESS
+
+year hotel revenue querry
+ select
+ arrival_date_year,
+ hotel,
+ round(sum((stays_in_week_nights+stays_in_weekend_nights)*adr),2) as revenue 
+ from hotels
+ group by arrival_date_year,hotel
+ select * from dbo.market_segment$
+([stays_in_weekend_nights]+[stays_in_week_nights])*[adr]* discount
+
+
+	with hotels as (
+	select * from dbo.['2018$']
+	union
+	select * from dbo.['2019$']
+	union
+	select * from dbo.['2020$'])
+
+	 select * from hotels
+	left join dbo.market_segment$
+	 on hotels.market_segment = market_segment$ . market_segment
+	 left join dbo.meal_cost$
+	 on meal_cost$.meal = hotels.meal
+
